@@ -5,6 +5,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 //一个初始值为0的变量，两个线程交替操作，一个加一个减，循环5次
+//线程唤醒判断必须用while，因为会重新进行判断，但是for进行一次判断后就直接跳过
 class ShareData{
     private int num = 0;
     private Lock lock = new ReentrantLock();
