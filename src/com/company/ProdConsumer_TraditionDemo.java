@@ -6,11 +6,13 @@ import java.util.concurrent.locks.ReentrantLock;
 
 //一个初始值为0的变量，两个线程交替操作，一个加一个减，循环5次
 //线程唤醒判断必须用while，因为会重新进行判断，但是for进行一次判断后就直接跳过
+
+//资源类
 class ShareData{
     private int num = 0;
     private Lock lock = new ReentrantLock();
     private Condition condition = lock.newCondition();
-
+//资源类的操作
     public void increment() throws Exception{
         lock.lock();
         try {
@@ -33,7 +35,7 @@ class ShareData{
     }
 
     public void decrement() throws Exception{
-        lock.lock();
+        lock.lock();//同步代码块加锁
         try {
             //判断
             while(num==0){
@@ -53,6 +55,7 @@ class ShareData{
 
     }
 }
+//创建线程
 public class ProdConsumer_TraditionDemo {
 
     public static void main(String[] args){
