@@ -8,7 +8,7 @@ public class SonDemo extends FatherDemo {
     }
     SonDemo(){
         System.out.print(" 7 ;");
-    }
+    }//构造器默认调用父类的init方法，而且最后执行
     {
         System.out.print(" 8 ;");
     }
